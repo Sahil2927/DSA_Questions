@@ -38,6 +38,7 @@
 // Approach 2(Optimised)
 //TC=O(N)
 //SC=O(N)
+// The optimized version uses a single, shared string reference (s) passed down the tree. It appends characters directly to the end of the final buffer in a top-down, depth-first order.
 class Solution {
 public:
     string tree2str(TreeNode* root) {
