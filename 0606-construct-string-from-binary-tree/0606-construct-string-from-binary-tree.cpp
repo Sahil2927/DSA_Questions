@@ -9,24 +9,58 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+
+ //Approach-1 
+ //TC=O(N^2)
+ //SC=O(N)
+// class Solution {
+// public:
+//     string tree2str(TreeNode* root) {
+//         if(root==NULL) return "";
+
+//         string result=to_string(root->val);
+        
+//         string LEFT= tree2str(root->left);
+//         string RIGHT=tree2str(root->right);
+
+//         if(root->left==NULL && root->right==NULL) return result;
+
+//         if(root->left==NULL){
+//             return result+"()"+"("+RIGHT+")";
+//         }
+//         if(root->right==NULL){
+//             return result+"("+LEFT+")";
+//         }
+//         return result+"("+LEFT+")"+"("+RIGHT+")";
+//     }
+// };
+
+// Approach 2(Optimised)
+//TC=O(N)
+//SC=O(N)
 class Solution {
 public:
     string tree2str(TreeNode* root) {
-        if(root==NULL) return "";
+        string result = "";
+        helper(root, result);
+        return result;
+    }
 
-        string result=to_string(root->val);
+private:
+    void helper(TreeNode* node, string& s) {
+        if (!node) return;
         
-        string LEFT= tree2str(root->left);
-        string RIGHT=tree2str(root->right);
-
-        if(root->left==NULL && root->right==NULL) return result;
-
-        if(root->left==NULL){
-            return result+"()"+"("+RIGHT+")";
+        s += to_string(node->val);
+        
+        if (node->left || node->right) {
+            s += "(";
+            helper(node->left, s);
+            s += ")";
         }
-        if(root->right==NULL){
-            return result+"("+LEFT+")";
+        if (node->right) {
+            s += "(";
+            helper(node->right, s);
+            s += ")";
         }
-        return result+"("+LEFT+")"+"("+RIGHT+")";
     }
 };
