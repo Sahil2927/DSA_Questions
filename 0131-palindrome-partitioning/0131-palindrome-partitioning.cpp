@@ -1,3 +1,5 @@
+//TC=O(n*2^n)
+//SC=)(n*2^n)
 class Solution {
 public:
     int n;
