@@ -7,6 +7,7 @@ public:
         if(idx>=n || target<0){
             return 0;
         }
+        // MEMOIZATION LOOKUP: If we already calculated this state, return it instantly.
         if(t[idx][target]!=-1){
             return t[idx][target];
         }
