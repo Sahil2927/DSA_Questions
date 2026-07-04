@@ -22,3 +22,34 @@ public:
         return solve(0,nums,target);
     }
 };
+
+//Approach-2
+class Solution {
+public:
+    // Only target changes, so we only need a 1D memo array
+    int t[1001]; 
+
+    int solve(vector<int>& nums, int target) {
+        // Base cases
+        if (target == 0) return 1;
+        if (target < 0) return 0;
+        
+        // Memoization check
+        if (t[target] != -1) return t[target];
+        
+        int total_ways = 0;
+        
+        // Try every single number in the array for the current step
+        for (int i = 0; i < nums.size(); i++) {
+            total_ways += solve(nums, target - nums[i]);
+        }
+        
+        // Store and return
+        return t[target] = total_ways;
+    }
+
+    int combinationSum4(vector<int>& nums, int target) {
+        memset(t, -1, sizeof(t));
+        return solve(nums, target);
+    }
+};
