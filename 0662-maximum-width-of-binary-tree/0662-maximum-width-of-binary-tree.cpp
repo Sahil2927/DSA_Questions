@@ -29,7 +29,7 @@ public:
                 if(node->left) q.push({node->left,cur_idx*2+1});
                 if(node->right) q.push({node->right,cur_idx*2+2});
             }
-            ans=max(ans,last-first+1);
+            ans=max(ans,static_cast<int>(last - first + 1));
         }
         return ans;
     }
