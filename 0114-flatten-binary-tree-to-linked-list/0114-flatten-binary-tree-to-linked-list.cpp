@@ -26,6 +26,10 @@ public:
     //         cur->left=NULL;
     //     }
     // }
+
+    // Morris Traversal to flatten a binary tree into a linked list in-place
+    //TC=O(N)
+    //SC=O(1)
     void flatten(TreeNode* root) {
         if(!root) return;
         TreeNode* cur=root;
